@@ -30,9 +30,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 #add active class when link is active
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
-
 #make form simple
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
+#help find countries
+gem 'country_select', '~> 4.0'
 
 #images
 gem 'carrierwave', '~> 2.1'

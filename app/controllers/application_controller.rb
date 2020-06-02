@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
   before_action :current_cart
-
   #help us put it in the views
   helper_method :current_cart
 

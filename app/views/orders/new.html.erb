@@ -17,7 +17,7 @@
 <% end %>
 
 <script>
-  var stripe = Stripe("&lt;%= Rails.application.credentials.stripe[Rails.env.to_sym][:stripe_public_key] %&gt;")
+  var stripe = Stripe("<%= Rails.application.credentials[Rails.env.to_sym][:stripe_public_key] %>")
   var elements = stripe.elements();
 
   var card = elements.create('card');

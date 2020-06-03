@@ -16,4 +16,35 @@ class Order < ApplicationRecord
     end
   end
 
+  def save_and_charge
+    # Check our data is valid, and if it is, charge in Stripe and save if all is good
+
+  if self.valid?
+
+    Stripe.api_key = Rails.application.credentials[Rails.env.to_sym][:stripe_secret_key]
+
+    Stripe::Charge.create(
+      amount: self.total_price,
+      currency: "usd",
+      source: self.stripe_token,
+      description: "Order for " + self.email,
+    )
+
+    self.save
+  else
+    # Doesn’t pass validations
+    false
+  end
+end
+
+  def total_price
+    @total = 0
+
+    order_items.each do |item|
+      @total = @total + item.product.price * item.quantity
+    end
+
+    @total
+  end
+
 end

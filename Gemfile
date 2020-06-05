@@ -51,8 +51,7 @@ gem 'fog-aws', '~> 3.6', '>= 3.6.5'
 #authenticifcation
 gem 'devise', '~> 4.7', '>= 4.7.1'
 #admin
-gem 'activeadmin'
-
+gem 'activeadmin', '~> 2.7'
 #payment
 gem 'stripe', '~> 5.22'
 

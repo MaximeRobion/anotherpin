@@ -343,7 +343,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to (~> 1.0, >= 1.0.5)
-  activeadmin
+  activeadmin (~> 2.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)

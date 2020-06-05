@@ -10,7 +10,11 @@
   <%= f.input :city %>
   <%= f.input :postal_code %>
 
-  <div id="card-errors"></div>
+  <div id="card-errors">
+    <% @order.errors[:stripe_token].each do |message|%>
+    <p class="error"><%= message %></p>
+    <% end %>
+  </div>
   <div id="card"></div>
 
   <%= f.button :submit, "Submit order" %>
@@ -20,7 +24,7 @@
   var stripe = Stripe("<%= Rails.application.credentials[Rails.env.to_sym][:stripe_public_key] %>")
   var elements = stripe.elements();
 
-  var card = elements.create('card');
+  var card = elements.create('card', { hidePostalCode: true });
   card.mount("#card");
 
   $("form.new_order").on("submit", function (ev) {

@@ -1,4 +1,4 @@
-<h2>Cart</h2>
+<div class="cart-page">
 
 <% if @current_cart.order_items.any? %>
 
@@ -16,7 +16,7 @@
     <% @current_cart.order_items.each do |item| %>
     <tr>
       <td>
-        <%= image_tag item.product.image_1.thumb.url, width: "50" %>
+        <%= image_tag item.product.image_1.thumb.url, width: "100" %>
         <%= item.product.title %>
       </td>
       <td> <%= number_to_currency item.product.price_in_dollars %> </td>
@@ -24,28 +24,33 @@
         <%= simple_form_for [item.product, item] do |f| %>
             <%= f.input :quantity, label: false %>
 
-            <%= f.button :submit, "Update quantity" %>
+            <%= f.button :submit, "UPDATE QTY", class: "update-qty-btn" %>
           <% end %>
       </td>
       <td>
-        <%= link_to "Remove", product_order_item_path(item.product, item), method: :delete %>
+        <%= link_to "REMOVE  |  X", product_order_item_path(item.product, item), method: :delete, class: "remove-btn" %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<p>
-Total: <%= number_to_currency @current_cart.total_price_in_dollars %>
-</p>
+<div class="cart-total">
+  <p>Total: <%= number_to_currency @current_cart.total_price_in_dollars %></p>
+</div>
 
-<p>
-<%= link_to "Continue to checkout", new_order_path %>
-</p>
-
+<div class="menu">
+  <div class="back-btn">
+    <p><%= link_to "BACK TO SHOP", products_path %></p>
+  </div>
+  <div class="checkout-btn">
+    <p><%= link_to "CONTINUE TO CHECKOUT", new_order_path %></p>
+  </div>
+</div>
 
 <% else %>
 
 <p class="empty">There are no items in your cart</p>
 
 <% end %>
+</div>

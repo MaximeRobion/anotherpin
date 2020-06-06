@@ -15,17 +15,64 @@
     <p class="error"><%= message %></p>
     <% end %>
   </div>
-  <div id="card"></div>
+  <!-- <div id="card"></div> -->
+  <div class="input">
+    <label for="card-number">Card number</label>
+    <div id="card-number"></div>
+  </div>
+
+  <div class="input">
+    <label for="card-expiry">Card expiry</label>
+    <div id="card-expiry"></div>
+  </div>
+
+  <div class="input">
+    <label for="card-cvc">Card CVC</label>
+    <div id="card-cvc"></div>
+  </div>
 
   <%= f.button :submit, "Submit order" %>
 <% end %>
 
 <script>
-  var stripe = Stripe("<%= Rails.application.credentials[Rails.env.to_sym][:stripe_public_key] %>")
-  var elements = stripe.elements();
+  // load the fonts in
+ var fonts = [
+   {
+     cssSrc: "https://fonts.googleapis.com/css?family=Karla"
+   }
+ ]
 
-  var card = elements.create('card', { hidePostalCode: true });
-  card.mount("#card");
+ // styles for the stripe inputs
+ var styles = {
+   base: {
+     iconColor: "#cccccc",
+     color: "#000000",
+     fontFamily: "Karla, Helvetica, Arial, sans-serif",
+     fontSize: "16px",
+
+     "::placeholder": {
+       color: "#cccccc"
+     },
+     ":-webkit-autofill": {
+       color: "#cccccc"
+     }
+   },
+   invalid: {
+     iconColor: "#FFC7EE",
+     color: "#A31621"
+   }
+ }
+  var stripe = Stripe("<%= Rails.application.credentials[Rails.env.to_sym][:stripe_public_key] %>")
+  var elements = stripe.elements({ fonts: fonts });
+
+  var cardNumber = elements.create('cardNumber', { style: styles });
+  cardNumber.mount('#card-number');
+
+  var cardExpiry = elements.create('cardExpiry', { style: styles });
+  cardExpiry.mount('#card-expiry');
+
+  var cardCvc = elements.create('cardCvc', { style: styles });
+  cardCvc.mount('#card-cvc');
 
   $("form.new_order").on("submit", function (ev) {
     ev.preventDefault()

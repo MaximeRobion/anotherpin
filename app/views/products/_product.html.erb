@@ -3,9 +3,13 @@
     <%= image_tag product.image_1.medium.url %>
   <% end %>
 
-  <h3><%= link_to product.title, product_path(product) %></h3>
+  <div class="product-title">
+    <%= link_to product.title, product_path(product) %>
+  </div>
 
-  <p>
-    <%= number_to_currency product.price_in_dollars %>
-  </p>
+  <div class="product-price">
+    <p>
+      <%= number_to_currency product.price_in_dollars %>
+    </p>
+  </div>
 </div>

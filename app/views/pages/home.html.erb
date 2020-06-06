@@ -1,5 +1,19 @@
-<h1>Homepage!</h1>
+<div class="hero">
+  <div class="hero-text">
+    <h2>Hipster-approved enamel pins.<br> Made in the good ol' US of A.</h2>
+    <h4>Ten bucks each, with free shiping.</h4>
+      <%= link_to "SHOP NOW", products_path, class: "cta" %>
+  </div>
+</div>
 
-<h2>Featured Pins</h2>
+<div class="featured">
+  <h2>Featured Pins</h2>
 
-<%= render partial: "products/product", collection: @featured_products %>
+  <div class="featured-grid">
+    <%= render partial: "products/product", collection: @featured_products %>
+  </div>
+
+  <div class="collection-btn">
+    <%= link_to "VIEW THE COLLECTION", products_path, class: "featured-cta" %>
+  </div>
+</div>

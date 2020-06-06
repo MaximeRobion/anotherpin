@@ -9,37 +9,34 @@ $accent: #A31621;
 $scriptFont: "Playfair Display";
 $sansFont: "Karla";
 
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
 body {
   font-family: $sansFont;
   color: $black;
 }
 
 header, main, footer {
-  padding: 20px;
-}
-
-a {
-  color: $accent;
-  text-decoration: none;
-  border-bottom: 0.1em solid rgba($accent, 0.25);
-  transition: border-bottom-color 0.25s;
-
-  &:hover {
-    border-bottom-color: $accent;
-  }
+  padding: 1rem 2rem;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  h1 {
-    margin: 0;
-  }
+  color: $white;
+  background-color: $accent;
 
   nav a {
-    margin: 0 0 0 10px;
+    margin: 0 0 0 1rem;
+    color: $white;
+    font-weight: 400;
   }
 }
 
@@ -47,9 +44,8 @@ footer {
   color: #999;
 }
 
-
 div.product {
-  width: 200px;
+  width: 250px;
 
   img {
     width: 100%;
@@ -62,12 +58,267 @@ div.flash-success {
   padding: 10px 20px 10px 20px;
 }
 
+//HOMEPAGE CSS
+
+.hero {
+  height: 70vh;
+  background-image: url("enamel-pin-bomb.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10rem 6rem;
+}
+
+.hero-text {
+  color: $white;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-family: $scriptFont;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+}
+
+.cta {
+  background-color: $white;
+  color: $black;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  width: 9rem;
+  text-align: center;
+  margin: 2rem 0rem;
+  display: inline-block;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  }
+}
+
+.featured {
+  background-color: $accent;
+  padding: 6rem 3rem 2rem 3rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: $white;
+  }
+}
+
+.featured-grid {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product {
+  position: relative;
+
+  .product-title {
+    position: absolute;
+    top: 6rem;
+    left: 1.5rem;
+    transform-origin: left;
+    transform: rotate(-90deg);
+
+    a {
+      font-family: $scriptFont;
+      font-size: 1rem;
+      font-weight: 400;
+      color: $accent;
+    }
+  }
+
+  .product-price {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+.collection-btn {
+  margin: 5rem auto;
+  width: 14rem;
+}
+
+.featured-cta {
+  background-color: $white;
+  color: $black;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  width: 14rem;
+  text-align: center;
+  display: inline-block;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  }
+}
+
+
+//SHOP PAGE
+
+.shop-img {
+  background-image: url("enamel-pin-hotdog.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40vh;
+}
+
+.shop-title {
+  position: absolute;
+  top: 23rem;
+  left: 4rem;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: $white;
+  }
+}
+
+.shop-grid {
+  padding: 3rem 2rem;
+  margin: auto;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.shop-message {
+  margin: auto;
+  width: 20rem;
+  text-align: center;
+  color: $accent;
+  font-family: $scriptFont;
+  font-size: 1rem;
+}
+
+//PRODUCT PAGE
+
+.breadcrumb {
+  margin: 4rem 0rem 0rem 4rem;
+
+  a {
+    color: $black;
+
+    &:hover {
+      border-bottom: solid 1px $black;
+    }
+  }
+}
+
+.product-container {
+  padding: 4rem;
+  display: flex;
+
+
+
+  .product-small-photo {
+    flex: 1;
+
+    .small-img {
+      width: 7rem;
+    }
+  }
+
+  .product-main-photo {
+    flex: 4;
+    margin: 0rem 2rem;
+
+    .main-img {
+      width: 25rem;
+    }
+  }
+
+  .product-text {
+    flex: 3;
+
+    h2 {
+      color: $accent;
+      font-family: $scriptFont;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      color: $accent;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+    }
+
+    input[type=number] {
+      width: 60px;
+      font-size: 1rem;
+      font-family: $sansFont;
+      margin-left: 2rem;
+    }
+
+      .cart-btn {
+        margin-top: 2rem;
+        background-color: $accent;
+        color: $white;
+        padding: 0.8rem 1.6rem;
+        border-radius: 25px;
+        width: 10rem;
+        text-align: center;
+        display: inline-block;
+        border: none;
+        font-size: 1rem;
+        font-family: $sansFont;
+
+        &:hover {
+          box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+        }
+      }
+  }
+}
+
+
+// INFO PAGE
+.info-page {
+  padding: 4rem;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    width: 70%;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: $accent;
+  }
+}
+
+//CART PAGE
+
 
 table {
   width: 100%;
+  margin-bottom: 3rem;
 
   th {
     text-align: left;
+    font-family: $scriptFont;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
 
   th, td {
@@ -96,5 +347,86 @@ form.edit_order_item {
 
   input[type=number] {
     width: 60px;
+    font-size: 1rem;
+    font-family: $sansFont;
+  }
+
+  .update-qty-btn {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-family: $sansFont;
+    background-color: $white;
+    padding: 0.5rem 1rem;
+    width: 6rem;
+    border: solid 1px #E3E3E3;
+    text-align: center;
+    margin-left: 1rem;
+  }
+}
+
+.remove-btn {
+  background-color: $white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  width: 7rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 0.7rem;
+  border: solid 1px #E3E3E3;
+  color: $black;
+}
+
+.cart-page {
+  padding: 4rem;
+
+  .cart-total {
+    margin: auto;
+    width: 20rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .menu {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+
+    .back-btn {
+      background-color: $white;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      width: 15rem;
+      text-align: center;
+      display: inline-block;
+      font-size: 1rem;
+      border: solid 1px #E3E3E3;
+
+      a {
+        color: $black;
+      }
+
+      &:hover {
+        box-shadow: 0px 0px 10px 0px rgba($black,0.25);
+      }
+    }
+
+    .checkout-btn {
+      background-color: $accent;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      width: 15rem;
+      text-align: center;
+      display: inline-block;
+      font-size: 1rem;
+
+      a {
+        color: $white;
+      }
+
+      &:hover {
+        box-shadow: 0px 0px 10px 0px rgba($accent,0.25);
+      }
+    }
   }
 }

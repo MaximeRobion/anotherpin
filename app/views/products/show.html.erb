@@ -1,13 +1,33 @@
-<h2><%= @product.title %></h2>
 
-<%= simple_format @product.description %>
+<p class="breadcrumb"><%= link_to "All Products", products_path %> > <%= @product.title %></p>
 
-<%= simple_form_for [@product, @order_item] do |f| %>
-  <%= f.input :quantity %>
 
-  <%= f.button :submit, "Add to cart" %>
-<% end %>
+<div class="product-container">
 
-<p>
-  <%= link_to "Back to all products", products_path %>
-</p>
+  <div class="product-small-photo">
+    <%= image_tag @product.image_1.thumb.url, class: "small-img" %>
+    <% if @product.image_2.present? %>
+    <%= image_tag @product.image_2.thumb.url, class: "small-img" %>
+    <% end %>
+    <% if @product.image_3.present? %>
+    <%= image_tag @product.image_3.thumb.url, class: "small-img" %>
+    <% end %>
+  </div>
+
+  <div class="product-main-photo">
+    <%= image_tag @product.image_1.large.url, class: "main-img" %>
+  </div>
+
+  <div class="product-text">
+    <h2><%= @product.title %></h2>
+    <p class="price"><%= number_to_currency @product.price_in_dollars %></p>
+    <p><%= simple_format @product.description %></p>
+
+    <%= simple_form_for [@product, @order_item] do |f| %>
+      <%= f.input :quantity %>
+
+      <%= f.button :submit, "Add to cart", class: "cart-btn" %>
+    <% end %>
+  </div>
+
+</div>

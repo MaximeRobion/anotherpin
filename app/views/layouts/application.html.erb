@@ -14,7 +14,11 @@
 
   <body>
     <header>
-      <h1><%= link_to "Another Pin Co", root_path%></h1>
+      <h1>
+        <%= link_to root_path do %>
+        <%= image_tag "logo.svg", width: "50%" %>
+        <% end  %>
+      </h1>
       <nav>
         <%= link_to "Shop", products_path %>
         <%= link_to "Info", info_path %>
